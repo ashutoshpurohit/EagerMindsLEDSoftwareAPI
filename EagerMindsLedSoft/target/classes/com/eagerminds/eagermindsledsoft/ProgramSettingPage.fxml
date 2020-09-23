@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.CheckBox?>
+
+
+<VBox xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" prefHeight="800.0" prefWidth="1200.0"  fx:controller="com.eagerminds.eagermindsledsoft.pages.play.ProgramSettingPageController">
+    
+<children>
+        <HBox prefHeight="550.0" prefWidth="1200.0">
+            <children>
+                <VBox>
+                    <HBox>
+                        <VBox.margin>
+                            <Insets left="10" top="30.0" />
+                        </VBox.margin>
+                        <Button fx:id="btn_create_playlist" mnemonicParsing="false"
+                            onMouseClicked="#onCreatePlaylist" text="%create_program"></Button>
+
+                        <Button fx:id="btn_open_playlist" mnemonicParsing="false"
+                            onAction="#onOpenProgram" text="%open_program">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Button>
+
+                        <Button fx:id="btn_publish_playlist" mnemonicParsing="false"
+                            onMouseClicked="#onPublishProgram" text="%publish_program">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="btn_publish_playlist_direct" mnemonicParsing="false"
+                            visible="false" managed="false" onMouseClicked="#onPublishProgramDirect"
+                            text="%publish_directly">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Button>
+
+                        <Button fx:id="btn_publish_insertplay" mnemonicParsing="false"
+                            onAction="#onActionPublishInsertPlay" text="%publish_insert_play">
+                            <HBox.margin>
+                                <Insets left="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </HBox>
+                    <ScrollPane fx:id="playlist_container" prefHeight="450.0" prefWidth="220.0">
+                        <VBox.margin>
+                            <Insets left="10.0" top="10" />
+                        </VBox.margin>
+                        <TreeView fx:id="treeview">
+
+                        </TreeView>
+                    </ScrollPane>
+                </VBox>
+                <!-- PAGE-->
+                <VBox fx:id="vbox_insertplay_setting">
+                    <HBox.margin>
+                        <Insets left="10" top="70.0" />
+                    </HBox.margin>
+                    <!-- Dwell time -->
+                    <HBox>
+                        <Label text="Starting time:">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_start_year" prefWidth="55" text="2019" />
+                        <Label text="year" />
+                        <TextField fx:id="tf_start_month" prefWidth="55" text="01" />
+                        <Label text="month" />
+                        <TextField fx:id="tf_start_day" prefWidth="55" text="01" />
+                        <Label text="day" />
+                        <TextField fx:id="tf_start_hour" prefWidth="55" text="00" />
+                        <Label text="Time" />
+                        <TextField fx:id="tf_start_minute" prefWidth="55" text="00" />
+                        <Label text="Minute" />
+                        <TextField fx:id="tf_start_second" prefWidth="55" text="00" />
+                        <Label text="second" />
+
+                    </HBox>
+
+                    <HBox>
+                        <VBox.margin>
+                            <Insets top="10.0" />
+                        </VBox.margin>
+                        <Label text="End Time:">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_end_year" prefWidth="55" text="9102" />
+                        <Label text="year" />
+                        <TextField fx:id="tf_end_month" prefWidth="55" text="12" />
+                        <Label text="month" />
+                        <TextField fx:id="tf_end_day" prefWidth="55" text="31" />
+                        <Label text="day" />
+                        <TextField fx:id="tf_end_hour" prefWidth="55" text="23" />
+                        <Label text="Time" />
+                        <TextField fx:id="tf_end_minute" prefWidth="55" text="59" />
+                        <Label text="Minute" />
+                        <TextField fx:id="tf_end_second" prefWidth="55" text="59" />
+                        <Label text="second" />
+
+                    </HBox>
+
+                    <HBox>
+                        <VBox.margin>
+                            <Insets top="10" />
+                        </VBox.margin>
+
+
+                        <Label text="background color:">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <ColorPicker fx:id="cp_program_bgcolor" />
+
+                        <Label text="%play_bgprogram_normal">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <ComboBox fx:id="cb_bgprogram_play" prefWidth="100">
+                        </ComboBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Picture parameter settings -->
+                <VBox fx:id="vbox_picture_setting" managed="false" visible="false">
+                    <HBox.margin>
+                        <Insets left="30" top="70.0" />
+                    </HBox.margin>
+                    <!-- x coordinate, y coordinate -->
+                    <HBox>
+                        <Label text="%widget_x_coordinate">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_x_pos" prefWidth="100" text="0" />
+                        <Label text="%widget_width">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_pic_width" prefWidth="100" text="100" />
+                    </HBox>
+                    <!-- Display width -->
+                    <HBox>
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <Label text="%widget_y_coordinate">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_y_pos" prefWidth="100" text="0" />
+                        <Label text="%widget_height">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_pic_height" prefWidth="100" text="100" />
+                    </HBox>
+                    <!-- Play times, play time -->
+                    <HBox>
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <Label text="%widget_play_times">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_pic_play_times" prefWidth="100" text="1" />
+
+                        <Label text="%widget_play_duration">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_pic_play_duration" prefWidth="100" text="100" />
+                    </HBox>
+                    <HBox prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                            <Button fx:id="btn_save_picture_params" mnemonicParsing="false"
+                                onAction="#onSavePictureParams"
+                                text="%save_widget_configuration">
+                                <HBox.margin>
+                                    <Insets top="5.0" />
+                                </HBox.margin>
+                            </Button>
+
+                            <Button fx:id="btn_switch_picture" mnemonicParsing="false"
+                                onAction="#onSwitchPicture"
+                                text="%switch_picture">
+                                <HBox.margin>
+                                    <Insets left="10" top="5.0" />
+                                </HBox.margin>
+                            </Button>
+                        </children>
+                    </HBox>
+                </VBox>
+
+
+                <!-- Video parameter setting -->
+                <VBox fx:id="vbox_video_setting" managed="false" visible="false">
+                    <HBox.margin>
+                        <Insets left="30" top="70.0" />
+                    </HBox.margin>
+                    <!-- x coordinate, y coordinate -->
+                    <HBox>
+                        <Label text="%widget_x_coordinate">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_video_x_pos" prefWidth="100" text="0" />
+                        <Label text="%widget_width">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_video_width" prefWidth="100" text="100" />
+                    </HBox>
+                    <!-- Display width -->
+                    <HBox>
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <Label text="%widget_y_coordinate">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_video_y_pos" prefWidth="100" text="0" />
+                        <Label text="%widget_height">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_video_height" prefWidth="100" text="100" />
+                    </HBox>
+                    <!-- Views -->
+                    <HBox>
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <Label text="%widget_play_times">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_video_play_times" prefWidth="100" text="1" />
+                    </HBox>
+                    <HBox prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                            <Button fx:id="btn_save_video_params" mnemonicParsing="false"
+                                onAction="#onSaveVideoParams" text="%save_widget_configuration">
+                                <HBox.margin>
+                                    <Insets top="5.0" />
+                                </HBox.margin>
+                            </Button>
+
+                            <Button mnemonicParsing="false"
+                                onAction="#onSwitchVideo"
+                                text="%switch_video">
+                                <HBox.margin>
+                                    <Insets left="10" top="5.0" />
+                                </HBox.margin>
+                            </Button>
+                        </children>
+                    </HBox>
+                </VBox>
+
+
+                <!-- GIF parameter settings -->
+                <VBox fx:id="vbox_gif_setting" managed="false" visible="false">
+                    <HBox.margin>
+                        <Insets left="30" top="70.0" />
+                    </HBox.margin>
+                    <!-- x coordinate, y coordinate -->
+                    <HBox>
+                        <Label text="%widget_x_coordinate">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_gif_x_pos" prefWidth="100" text="0" />
+                        <Label text="%widget_width">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_gif_width" prefWidth="100" text="100" />
+                    </HBox>
+                    <!-- Display width -->
+                    <HBox>
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <Label text="%widget_y_coordinate">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_gif_y_pos" prefWidth="100" text="0" />
+                        <Label text="%widget_height">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_gif_height" prefWidth="100" text="100" />
+                    </HBox>
+                    <!-- Play times, play time -->
+                    <HBox>
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <Label text="%widget_play_times">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_gif_play_times" prefWidth="100" text="1" />
+
+                        <Label text="%widget_play_duration">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_gif_play_duration" prefWidth="100" text="100" />
+                    </HBox>
+
+                    <HBox prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                            <Button fx:id="btn_save_gif_params" mnemonicParsing="false"
+                                onAction="#onSaveGifParams" text="%save_widget_configuration">
+                                <HBox.margin>
+                                    <Insets top="5.0" />
+                                </HBox.margin>
+                            </Button>
+
+                            <Button mnemonicParsing="false"
+                                onAction="#onSwitchGif"
+                                text="%switch_gif">
+                                <HBox.margin>
+                                    <Insets left="10" top="5.0" />
+                                </HBox.margin>
+                            </Button>
+                        </children>
+                    </HBox>
+                </VBox>
+
+
+                <!-- Text parameter setting -->
+                <VBox fx:id="vbox_text_setting" managed="false" visible="false">
+                    <HBox.margin>
+                        <Insets left="30" top="70.0" />
+                    </HBox.margin>
+                    <!-- x coordinate, y coordinate -->
+                    <HBox>
+                        <Label text="%widget_x_coordinate">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_text_x_pos" prefWidth="100" text="0" />
+                        <Label text="%widget_width">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_text_width" prefWidth="100" text="100" />
+                    </HBox>
+                    <!-- Display width -->
+                    <HBox>
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <Label text="%widget_y_coordinate">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_text_y_pos" prefWidth="100" text="0" />
+                        <Label text="%widget_height">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_text_height" prefWidth="100" text="100" />
+                    </HBox>
+                    <!-- Font, font size -->
+                    <HBox>
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <Label text="%widget_text_font">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <ComboBox fx:id="cb_text_font" prefWidth="150.0">
+                            <!--<items>-->
+                            <!--<FXCollections fx:factory="observableArrayList">-->
+                            <!--<String fx:value="%widget_text_st"/>-->
+                            <!--<String fx:value="%widget_text_wryh"/>-->
+                            <!--</FXCollections>-->
+                            <!--</items>-->
+                        </ComboBox>
+
+                        <Label text="%widget_text_font_size">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_text_fontsize" prefWidth="100" text="21" />
+                    </HBox>
+                    <!-- 前景颜色，背景颜色 -->
+                    <HBox>
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <Label text="%widget_text_font_color">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <ColorPicker fx:id="cp_text_fgcolor" />
+
+                        <Label text="%widget_forground_color">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <ColorPicker fx:id="cp_text_bgcolor" />
+                    </HBox>
+
+                    <!-- Text content -->
+                    <HBox>
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <Label text="%widget_text_content">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_text_content" prefWidth="350"
+                            text="%widget_text_filled_content" />
+                    </HBox>
+
+                    <HBox prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                            <Button fx:id="btn_save_text_params" mnemonicParsing="false"
+                                onAction="#onSaveTextParams" text="%save_widget_configuration">
+                                <HBox.margin>
+                                    <Insets top="5.0" />
+                                </HBox.margin>
+                            </Button>
+                        </children>
+                    </HBox>
+                </VBox>
+
+                <!-- Clock parameter setting -->
+                <VBox fx:id="vbox_dclock_setting" managed="false" visible="false">
+                    <HBox.margin>
+                        <Insets left="30" top="70.0" />
+                    </HBox.margin>
+                    <!-- x coordinate, y coordinate -->
+                    <HBox>
+                        <Label text="%widget_x_coordinate">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_dclock_x_pos" prefWidth="100" text="0" />
+                        <Label text="%widget_width">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_dclock_width" prefWidth="100" text="100" />
+                    </HBox>
+                    <!-- Display width -->
+                    <HBox>
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <Label text="%widget_y_coordinate">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_dclock_y_pos" prefWidth="100" text="0" />
+                        <Label text="%widget_height">
+                            <HBox.margin>
+                                <Insets left="20" top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_dclock_height" prefWidth="100" text="100" />
+                    </HBox>
+                    <!-- Play times, play time -->
+                    <HBox>
+                        <Label text="%widget_play_duration">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_dclock_play_duration" prefWidth="100" text="100" />
+
+                        <Label text="%dclock_show_style">
+                            <HBox.margin>
+                                <Insets left="20" top="5" right="3" />
+                            </HBox.margin>
+                        </Label>
+                        <CheckBox fx:id="cb_multiple_line" prefHeight="25" alignment="BOTTOM_CENTER"
+                            text="%dclock_multiple_line" />
+
+                        <CheckBox fx:id="cb_dclock_4year" prefHeight="25" alignment="BOTTOM_CENTER"
+                            text="%dclock_year_style">
+                            <HBox.margin>
+                                <Insets left="8" />
+                            </HBox.margin>
+                        </CheckBox>
+                    </HBox>
+
+                    <HBox>
+                        <CheckBox fx:id="cb_dclock_year" prefHeight="25" alignment="BOTTOM_CENTER"
+                            text="%dclock_year"></CheckBox>
+                        <CheckBox fx:id="cb_dclock_month" prefHeight="25" alignment="BOTTOM_CENTER"
+                            text="%dclock_month">
+                            <HBox.margin>
+                                <Insets left="8" />
+                            </HBox.margin>
+                        </CheckBox>
+
+                        <CheckBox fx:id="cb_dclock_day" prefHeight="25" alignment="BOTTOM_CENTER"
+                            text="%dclock_day">
+                            <HBox.margin>
+                                <Insets left="8" />
+                            </HBox.margin>
+                        </CheckBox>
+
+                        <CheckBox fx:id="cb_dclock_hour" prefHeight="25" alignment="BOTTOM_CENTER"
+                            text="%dclock_hour">
+                            <HBox.margin>
+                                <Insets left="8" />
+                            </HBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="cb_dclock_minute" prefHeight="25" alignment="BOTTOM_CENTER"
+                            text="%dclock_minute">
+                            <HBox.margin>
+                                <Insets left="8" />
+                            </HBox.margin>
+                        </CheckBox>
+
+                        <CheckBox fx:id="cb_dclock_second" prefHeight="25" alignment="BOTTOM_CENTER"
+                            text="%dclock_second">
+                            <HBox.margin>
+                                <Insets left="8" />
+                            </HBox.margin>
+                        </CheckBox>
+
+                        <CheckBox fx:id="cb_dclock_week" prefHeight="25" alignment="BOTTOM_CENTER"
+                            text="%dclock_week">
+                            <HBox.margin>
+                                <Insets left="8" />
+                            </HBox.margin>
+                        </CheckBox>
+                    </HBox>
+                    <HBox>
+                        <CheckBox fx:id="cb_dclock_time_style" prefHeight="25"
+                            alignment="BOTTOM_CENTER" text="%dclock_time"></CheckBox>
+                        <CheckBox fx:id="cb_dclock_show_moraft" prefHeight="25"
+                            alignment="BOTTOM_CENTER" text="%dclock_ma">
+                            <HBox.margin>
+                                <Insets left="8" />
+                            </HBox.margin>
+                        </CheckBox>
+                    </HBox>
+
+                    <HBox>
+                        <Label text="%dclock_text_font">
+                            <HBox.margin>
+                                <Insets top="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_dclock_text_font" prefWidth="100" text="Arial" />
+                        <Label text="%dclock_text_size">
+                            <HBox.margin>
+                                <Insets top="5" left="5" />
+                            </HBox.margin>
+                        </Label>
+                        <TextField fx:id="tf_dclock_text_size" prefWidth="100" text="14" />
+                    </HBox>
+
+                    <HBox prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                            <Button fx:id="btn_save_dclock_params" mnemonicParsing="false"
+                                onAction="#onSaveDClockParams" text="%save_widget_configuration">
+                                <HBox.margin>
+                                    <Insets top="5.0" />
+                                </HBox.margin>
+                            </Button>
+                        </children>
+                    </HBox>
+                </VBox>
+
+                <!-- Streaming media parameter settings -->
+                <VBox fx:id="vbox_stream_setting" visible="false" managed="false">
+                    <HBox.margin>
+                        <Insets left="30" top="70.0" />
+                    </HBox.margin>
+
+                    <HBox alignment="BOTTOM_LEFT">
+                        <!-- x coordinate -->
+                        <Label text="%widget_x_coordinate" />
+                        <TextField fx:id="tf_stream_x" prefWidth="100" text="0" />
+                        <!-- Display width -->
+                        <Label text="%widget_width" />
+                        <TextField fx:id="tf_stream_width" prefWidth="100" text="100" />
+                    </HBox>
+
+                    <HBox alignment="BOTTOM_LEFT">
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <!-- Y coordinate -->
+                        <Label text="%widget_y_coordinate" />
+                        <TextField fx:id="tf_stream_y" prefWidth="100" text="0" />
+
+                        <!-- Display height -->
+                        <Label text="%widget_height" />
+                        <TextField fx:id="tf_stream_height" prefWidth="100" text="100" />
+                    </HBox>
+
+                    <HBox alignment="BOTTOM_LEFT">
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <!-- Views -->
+                        <Label text="%widget_play_times" />
+                        <TextField fx:id="tf_stream_times" prefWidth="70" text="1" />
+                        <!-- Play time -->
+                        <Label text="%widget_play_duration" />
+                        <TextField fx:id="tf_stream_duration" prefWidth="100" text="100000" />
+                        <Label text="ms" />
+                    </HBox>
+
+                    <HBox alignment="BOTTOM_LEFT">
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+
+                        <Label text="%volume" />
+                        <TextField fx:id="tf_stream_volume" prefWidth="60" text="80" />
+                        <Label text="\%        " />
+
+                        <Label text="%stream_protocol_type" />
+                        <TextField fx:id="tf_stream_protocol" prefWidth="100" text="80" />
+
+                        <Label text="%stream_media_type" />
+                        <TextField fx:id="tf_stream_media_type" prefWidth="100" text="80" />
+                    </HBox>
+                    <HBox alignment="BOTTOM_LEFT">
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+                        <Label text="%stream_media_address" />
+                        <TextField fx:id="tf_stream_address" prefWidth="350" text="rtsp" />
+                    </HBox>
+
+                    <HBox alignment="BOTTOM_LEFT">
+                        <VBox.margin>
+                            <Insets top="8" />
+                        </VBox.margin>
+
+                        <Button fx:id="btn_save_stream_params" mnemonicParsing="false"
+                            onAction="#onSaveStreamParams" text="%save_widget_configuration" />
+                    </HBox>
+                </VBox>
+
+            </children>
+        </HBox>
+        <TextArea fx:id="ta_info" prefHeight="200.0" prefWidth="200.0" />
+    </children>
+</VBox>
+

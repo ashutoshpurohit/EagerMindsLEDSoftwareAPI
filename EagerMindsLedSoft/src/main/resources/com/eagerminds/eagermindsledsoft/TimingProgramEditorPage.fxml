@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox layoutX="15" layoutY="20" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.eagerminds.eagermindsledsoft.pages.play.TimingProgramEditorPageController">
+ <HBox alignment="CENTER_LEFT">
+        <Label text="%program_name" />
+        <Label text="：" />
+        <Label fx:id="lab_program_name" prefWidth="80" />
+        <Button fx:id="btn_choose_program" onAction="#btn_choose_program" text="%select_program_pls" />
+    </HBox>
+    <HBox>
+        <VBox.margin>
+            <Insets top="15" />
+        </VBox.margin>
+        <Label text="%timing_play_type" />
+        <Label text="：" />
+        <ComboBox fx:id="cb_select_program_type" prefWidth="110">
+        </ComboBox>
+    </HBox>
+    <VBox fx:id="vb_date_area">
+    <HBox>
+        <VBox.margin>
+            <Insets top="15" />
+        </VBox.margin>
+        <Label text="%valid_date" />
+        <Label text="：" />
+        <ComboBox fx:id="cb_select_program_date" prefWidth="110">
+        </ComboBox>
+    </HBox>
+    <HBox fx:id="hbox_selectdate" alignment="CENTER_LEFT">
+        <VBox.margin>
+            <Insets top="15" />
+        </VBox.margin>
+        <Label text="%valid_date" visible="false"/>
+        <Label text="：" visible="false"/>
+        <DatePicker fx:id="dp_select_start_date" />
+
+        <Label text="~">
+            <HBox.margin>
+                <Insets left="10" right="10" />
+            </HBox.margin>
+        </Label>
+
+        <DatePicker fx:id="dp_select_end_date" />
+    </HBox>
+    <HBox>
+        <VBox.margin>
+            <Insets top="15" />
+        </VBox.margin>
+        <Label text="%repeat_style" />
+        <ComboBox fx:id="cb_select_repeat_style" prefWidth="110">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="%repeat_everyday" />
+                    <String fx:value="%custom_style" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+    <HBox fx:id="hbox_repeat_selectday" spacing="5">
+        <VBox.margin>
+            <Insets left="15" top="15" />
+        </VBox.margin>
+        <Label text="%repeat_style" visible="false" />
+        <CheckBox fx:id="cb_monday" text="%repeat_monday" />
+        <CheckBox fx:id="cb_tuesday" text="%repeat_tuesday" />
+        <CheckBox fx:id="cb_wednesday" text="%repeat_wednesday" />
+        <CheckBox fx:id="cb_thursday" text="%repeat_thursday" />
+        <CheckBox fx:id="cb_friday" text="%repeat_friday" />
+        <CheckBox fx:id="cb_saturday" text="%repeat_saturday" />
+        <CheckBox fx:id="cb_sunday" text="%repeat_sunday" />
+    </HBox>
+    <HBox alignment="CENTER_LEFT">
+        <VBox.margin>
+            <Insets top="15" />
+        </VBox.margin>
+        <Label text="%timing_duration" />
+        <Label text="：" />
+
+        <!--开始时间-->
+        <TextField fx:id="tf_start_hour" prefWidth="35" text="00" />
+        <Label text="h">
+            <HBox.margin>
+                <Insets right="5" top="2" />
+            </HBox.margin>
+            <font>
+                <Font size="18" />
+            </font>
+        </Label>
+
+        <TextField fx:id="tf_start_minute" prefWidth="35" text="00" />
+        <Label text="m">
+            <HBox.margin>
+                <Insets right="5" top="1" />
+            </HBox.margin>
+            <font>
+                <Font size="18" />
+            </font>
+        </Label>
+
+        <TextField fx:id="tf_start_second" prefWidth="35" text="00" />
+        <Label text="s">
+            <HBox.margin>
+                <Insets right="5" top="1" />
+            </HBox.margin>
+            <font>
+                <Font size="18" />
+            </font>
+        </Label>
+
+        <Label text="~">
+            <HBox.margin>
+                <Insets left="10" right="10" />
+            </HBox.margin>
+        </Label>
+
+        <!--结束时间-->
+        <TextField fx:id="tf_end_hour" prefWidth="35" text="23" />
+        <Label text="h">
+            <HBox.margin>
+                <Insets right="5" top="2" />
+            </HBox.margin>
+            <font>
+                <Font size="18" />
+            </font>
+        </Label>
+
+        <TextField fx:id="tf_end_minute" prefWidth="35" text="59" />
+        <Label text="m">
+            <HBox.margin>
+                <Insets right="5" top="1" />
+            </HBox.margin>
+            <font>
+                <Font size="18" />
+            </font>
+        </Label>
+
+        <TextField fx:id="tf_end_second" prefWidth="35" text="59" />
+        <Label text="s">
+            <HBox.margin>
+                <Insets right="5" top="1" />
+            </HBox.margin>
+            <font>
+                <Font size="18" />
+            </font>
+        </Label>
+
+    </HBox>
+    </VBox>
+    <HBox alignment="CENTER">
+        <VBox.margin>
+            <Insets top="15" />
+        </VBox.margin>
+        <Button fx:id="btn_confirm" onAction="#btn_confirm" text="%confirm" />
+    </HBox>
+    <Label fx:id="lab_tag" alignment="CENTER" contentDisplay="CENTER">
+        <VBox.margin>
+            <Insets top="15" />
+        </VBox.margin>
+    </Label>
+
+</VBox>

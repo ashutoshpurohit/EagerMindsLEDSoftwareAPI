@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx" prefHeight="400.0" prefWidth="600.0"
+      xmlns:fx="http://javafx.com/fxml" fx:controller="com.eagerminds.eagermindsledsoft.pages.play.PlayControlPageController">
+<HBox >
+        <VBox.margin>
+            <Insets left="10" top="10"/>
+        </VBox.margin>
+        <Button fx:id="btn_play_program" prefWidth="110"
+                onAction="#onPlayProgram" text="%player_controller_play"/>
+        <Button fx:id="btn_stop_program" prefWidth="110"
+                onAction="#onStopProgram" text="%player_controller_stop"/>
+        <Button fx:id="btn_pause_program" prefWidth="110"
+                onAction="#onPauseProgram" text="%player_controller_pause"/>
+        <Button fx:id="btn_restore_program" prefWidth="110"
+                onAction="#onRestoreProgram" text="%player_controller_resume"/>
+        <Button fx:id="btn_delete_program" prefWidth="110"
+                onAction="#onDeleteProgram" text="%player_controller_delete"/>
+    </HBox>
+
+    <ListView fx:id="listview">
+        <VBox.margin>
+            <Insets left="10" top="10"/>
+        </VBox.margin>
+    </ListView>
+    <TextArea fx:id="action_info" prefHeight="200.0" prefWidth="200.0">
+        <VBox.margin>
+            <Insets left="10" top="5"/>
+        </VBox.margin>
+    </TextArea>
+
+</VBox>
+
